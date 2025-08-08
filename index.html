@@ -380,21 +380,27 @@
         
         <div class="rsvp-form">
             <h2 class="form-title">🎟️ RESERVE YOUR SEATS! 🎟️</h2>
-            <form action="mailto:jennaross55@gmail.com" method="post" enctype="text/plain">
+            <!-- Replace YOUR_EMAIL@EXAMPLE.COM with your actual email -->
+            <form action="https://formsubmit.co/plako.cfg@gmail.com" method="POST" id="rsvp-form">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="🎪 New RSVP for Three Ring Circus Birthday Party!">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                
                 <div class="form-group">
                     <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    <input type="text" id="name" name="Name" required placeholder="Enter your name">
                 </div>
                 
                 <div class="form-group">
                     <label>Will you be joining the circus?</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="yes" name="attending" value="yes" required>
+                            <input type="radio" id="yes" name="Attending" value="Yes! 🎉" required>
                             <label for="yes" class="radio-option">🎉 YES!</label>
                         </div>
                         <div>
-                            <input type="radio" id="no" name="attending" value="no" required>
+                            <input type="radio" id="no" name="Attending" value="Can't make it 😢" required>
                             <label for="no" class="radio-option">😢 Can't Make It</label>
                         </div>
                     </div>
@@ -402,7 +408,7 @@
                 
                 <div class="form-group">
                     <label for="guests">Number of Guests (including yourself):</label>
-                    <select id="guests" name="guests" required>
+                    <select id="guests" name="Number_of_Guests" required>
                         <option value="">Select number</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -415,7 +421,7 @@
                 
                 <div class="form-group">
                     <label for="children">Number of Children Attending:</label>
-                    <select id="children" name="children">
+                    <select id="children" name="Number_of_Children">
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -427,11 +433,16 @@
                 
                 <div class="form-group">
                     <label for="special">Special Notes (allergies, dietary needs, etc.):</label>
-                    <textarea id="special" name="special" placeholder="Let us know if you have any special requirements"></textarea>
+                    <textarea id="special" name="Special_Notes" placeholder="Let us know if you have any special requirements"></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">🎪 SEND RSVP 🎪</button>
             </form>
+            
+            <div id="success-message" style="display: none; background: white; border-radius: 15px; padding: 20px; margin-top: 20px; text-align: center;">
+                <h3 style="color: #4caf50; font-size: 1.5em;">🎉 Thank You! 🎉</h3>
+                <p style="color: #5e35b1; font-size: 1.1em;">Your RSVP has been received! See you at the circus!</p>
+            </div>
             
             <p style="text-align: center; color: white; margin-top: 20px; font-size: 1.1em;">
                 <strong>Please RSVP by September 10</strong>
@@ -512,7 +523,7 @@ Special Notes: ${formData.special || 'None'}
             `.trim();
             
             // Note: Replace 'your-email@example.com' with the actual email address
-            window.location.href = `mailto:jennaross55@gmail.com@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = `mailto:jennaross55@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
             // Show success message
             alert('🎪 Thank you for your RSVP! Your response is being sent. 🎪');
