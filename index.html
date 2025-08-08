@@ -254,16 +254,19 @@
         }
         
         .radio-option {
-            background: white;
+            background: rgba(255, 255, 255, 0.7);
             padding: 10px 20px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
+            border: 2px solid transparent;
+            color: #5e35b1;
         }
         
         .radio-option:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: white;
         }
         
         input[type="radio"] {
@@ -273,6 +276,9 @@
         input[type="radio"]:checked + label {
             background: #4caf50;
             color: white;
+            border: 2px solid #2e7d32;
+            box-shadow: 0 5px 15px rgba(76,175,80,0.5);
+            transform: scale(1.05);
         }
         
         .submit-btn {
@@ -386,6 +392,8 @@
                 <input type="hidden" name="_subject" value="🎪 New RSVP for Three Ring Circus Birthday Party!">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <!-- Optional: Add this line to redirect back to your page after submission -->
+                <!-- <input type="hidden" name="_next" value="https://jwperkinsit.github.io/thanks"> -->
                 
                 <div class="form-group">
                     <label for="name">Your Name:</label>
@@ -499,34 +507,18 @@
             }
         }, 2000);
         
-        // Handle form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = {
-                name: document.getElementById('name').value,
-                attending: document.querySelector('input[name="attending"]:checked')?.value,
-                guests: document.getElementById('guests').value,
-                children: document.getElementById('children').value,
-                special: document.getElementById('special').value
-            };
-            
-            // Create mailto link with form data
-            const subject = 'RSVP for Three Ring Circus Birthday Party';
-            const body = `
-Name: ${formData.name}
-Attending: ${formData.attending === 'yes' ? 'Yes! 🎉' : "Can't make it 😢"}
-Number of Guests: ${formData.guests}
-Number of Children: ${formData.children}
-Special Notes: ${formData.special || 'None'}
-            `.trim();
-            
-            // Note: Replace 'your-email@example.com' with the actual email address
-            window.location.href = `mailto:jennaross55@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Show success message
-            alert('🎪 Thank you for your RSVP! Your response is being sent. 🎪');
+        // Optional: Handle form submission with success message
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            // FormSubmit handles the actual submission
+            // This just adds a nice user experience
+            setTimeout(() => {
+                const form = document.getElementById('rsvp-form');
+                const successMsg = document.getElementById('success-message');
+                
+                // You can uncomment these lines if you want to hide the form after submission
+                // form.style.display = 'none';
+                // successMsg.style.display = 'block';
+            }, 100);
         });
     </script>
 </body>
